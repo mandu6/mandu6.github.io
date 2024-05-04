@@ -1,0 +1,31 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>微信检测</title>  
+</head>  
+<body>  
+    <script>  
+        function isWeChat() {  
+            var ua = navigator.userAgent.toLowerCase();  
+            // 这里是一些常见的微信用户代理标识，但请注意，这些可能会随时间而变化  
+            var isWeixin = /micromessenger/.test(ua) || /wechat/.test(ua);  
+            return isWeixin;  
+        }  
+  
+        function redirect() {  
+            if (isWeChat()) {  
+                // 如果在微信中打开，则重定向到网站1  
+                window.location.href = "sph.html";  
+            } else {  
+                // 否则，重定向到网站2  
+                window.location.href = "bilibili.html";  
+            }  
+        }  
+  
+        // 页面加载完成后执行重定向  
+        window.onload = redirect;  
+    </script>  
+</body>  
+</html>
