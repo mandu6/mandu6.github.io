@@ -1,0 +1,43 @@
+a {
+    color: inherit; /* 继承父元素的颜色 */
+    text-decoration: none; /* 消除下划线 */
+}
+
+a:hover {
+    text-decoration: none; /* 鼠标悬停时也不显示下划线 */
+}
+
+.header-center {
+    text-align: center; /* 使标题居中 */
+    margin-bottom: 5px; /* 标题与表格之间的间距 */
+    font-size: 48px; /* 修改了字体大小 */
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%; /* 设置为100%以使其占据父元素的全部宽度 */
+}
+
+.iframe-container iframe {
+    width: 100%; /* 使其占据容器的全部宽度 */
+    height: 310px; /* 明确设置高度 */
+    display: block; /* 消除默认的底边距 */
+    border: none; /* 移除边框 */
+}
+
+/* 添加高考倒计时页面的样式 */
+.countdown-container {
+    margin-bottom: 20px;
+}
+
+.countdown-container h2 {
+    text-align: center;
+    font-size: 48px;  /* 修改了字体大小 */
+    color: #000;
+}
+
+.countdown-container h1 {
+    text-align: center;
+    font-size: 60px;  /* 修改了字体大小 */
+    color: #f00;
+}
