@@ -33,6 +33,8 @@ function startCountdown(containerId, eventDate) {
 var eventDate4 = new Date("2024-08-18T11:00:00");
 var eventDate5 = new Date("2025-06-07T08:00:00");
 var eventDate6 = new Date("2025-01-07T08:00:00");
+var eventDate7 = new Date("2025-06-10T12:00:00");
+startCountdown('countdown4', eventDate7);
 startCountdown('countdown4', eventDate4);
 startCountdown('countdown5', eventDate5);
 startCountdown('countdown6', eventDate6);
