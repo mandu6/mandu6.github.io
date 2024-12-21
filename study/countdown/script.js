@@ -30,8 +30,8 @@ function startCountdown(containerId, eventDate) {
 }
 
 // 设置并启动两个倒计时
-var eventDate5 = new Date("2025-06-07T08:00:00");
-var eventDate6 = new Date("2025-01-07T08:00:00");
+var eventDate5 = new Date("2025-06-07T09:00:00");
+var eventDate6 = new Date("2025-01-06T08:00:00");
 var eventDate7 = new Date("2025-06-10T12:00:00");
 startCountdown('countdown7', eventDate7);
 startCountdown('countdown5', eventDate5);
