@@ -1,82 +1,99 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-    <meta charset="utf-8">  
-    <title>高考倒计时</title>  
-    <style>  
-        a {  
-            color: inherit; /* 继承父元素的颜色 */  
-            text-decoration: none; /* 消除下划线 */  
-        }  
-  
-        a:hover {  
-            text-decoration: none; /* 鼠标悬停时也不显示下划线 */  
-        }  
-  
-        .header-center {  
-            text-align: center; /* 使标题居中 */  
-            margin-bottom: 5px; /* 标题与表格之间的间距 */  
-            font-size: 48px;  
-        }  
-  
-        .iframe-container {  
-            position: relative;  
-            width: 100%; /* 设置为100%以使其占据父元素的全部宽度 */  
-        }  
-  
-        .iframe-container iframe {  
-            width: 100%; /* 使其占据容器的全部宽度 */  
-            height: 310px; /* 明确设置高度 */  
-            display: block; /* 消除默认的底边距 */  
-            border: none; /* 移除边框 */  
-        }  
-  
-        /* 添加高考倒计时页面的样式 */  
- 
-        #countdown { 
-            text-align: center; 
-            font-size: 48px;  
-            color: #f00;  
-            margin-top: 20px;  
-        }  
-    </style>  
-</head>  
-<body>  
-    <div class="iframe-container">  
-        <iframe id="myIframe" src="../../title.html" frameborder="0" allowfullscreen></iframe>  
-    </div>  
-  
-    <!-- 插入高考倒计时代码 -->  
-    <h1 class="header-center">高考倒计时</h1>  
-    <div id="countdown"></div>  
-  
-    <script>  
-        // 设置高考日期为北京时间6月7日上午9时  
-        var examDate = new Date(Date.UTC(2025, 5, 7, 1, 0, 0)); // 注意调整UTC时间  
-  
-        function updateCountdown() {  
-            var now = new Date();  
-            var distance = examDate - now;  
-  
-            if (distance < 0) {  
-                document.getElementById('countdown').innerHTML = "高考已经开始!";  
-                clearInterval(countdownInterval);  
-                return;  
-            }  
-  
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));  
-            distance %= 1000 * 60 * 60 * 24;  
-            var hours = Math.floor(distance / (1000 * 60 * 60));  
-            distance %= 1000 * 60 * 60;  
-            var minutes = Math.floor(distance / (1000 * 60));  
-            distance %= 1000 * 60;  
-            var seconds = Math.floor(distance / 1000);  
-  
-            document.getElementById('countdown').innerHTML = days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒 ";  
-        }  
-  
-        var countdownInterval = setInterval(updateCountdown, 1000);  
-        updateCountdown();  
-    </script>  
-</body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>高考倒计时</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .countdown-container h2 {
+            font-size: 48px;
+        }
+        .countdown-container h1 {
+            font-size: 60px;
+        }
+        #current-time {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 当前时间 -->
+    <div id="current-time"></div>
+
+    <!-- 倒计时部分 -->
+    <div class="countdown-container">
+        <h2>距离2025年6月高考还有</h2>
+        <h1 id="countdown5"></h1>
+    </div>
+</div>
+
+<script>
+    // 显示当前时间
+    function updateCurrentTime() {
+        var currentTimeElement = document.getElementById('current-time');
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从0开始，需要加1
+        var day = String(now.getDate()).padStart(2, '0');
+        var hours = String(now.getHours()).padStart(2, '0');
+        var minutes = String(now.getMinutes()).padStart(2, '0');
+        var seconds = String(now.getSeconds()).padStart(2, '0');
+
+        currentTimeElement.textContent = `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(updateCurrentTime, 1000);
+    updateCurrentTime();
+
+    // 倒计时函数
+    function startCountdown(containerId, eventDate) {
+        var countdownElement = document.getElementById(containerId);
+
+        function updateCountdown() {
+            var now = new Date();
+            var distance = eventDate - now;
+
+            // 计算时间差
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // 显示倒计时
+            countdownElement.textContent = days + '天 ' + hours + '时 ' + minutes + '分 ' + seconds + '秒 ';
+
+            // 如果倒计时结束，显示一条消息
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = '事件已发生!';
+            }
+        }
+
+        // 每秒更新一次倒计时
+        var countdownInterval = setInterval(updateCountdown, 1000);
+
+        // 初始显示倒计时
+        updateCountdown();
+    }
+
+    // 设置并启动倒计时
+    var eventDate5 = new Date("2025-06-07T09:00:00");
+    startCountdown('countdown5', eventDate5);
+</script>
+</body>
 </html>
