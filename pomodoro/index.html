@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄工作钟</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <!-- 添加网页图标 -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmNDQ0NCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6Ii8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTEyIDZ2NmwzIDNNMTIgMTJ2NiIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTgiIHI9IjIiIGZpbGw9IiNmZjQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+" type="image/svg+xml">
+</head>
+<body>
+    <div class="container">
+        <div class="timer-header">
+            <div class="mode-text" id="modeText">工作模式</div>
+        </div>
+        
+        <div class="time-display" id="timer">25:00</div>
+        
+        <div class="settings" id="settings">
+            <div class="input-group">
+                <label>工作时间（分钟）</label>
+                <input type="number" id="workInput" min="1" value="25">
+            </div>
+            <div class="input-group">
+                <label>休息时间（分钟）</label>
+                <input type="number" id="breakInput" min="1" value="5">
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="primary-btn" id="startBtn">开始</button>
+            <button class="secondary-btn" id="stopBtn" disabled>暂停</button>
+            <button class="secondary-btn" id="resetBtn" disabled>重置</button>
+        </div>
+    </div>
+
+    <button class="fullscreen-btn" id="fsButton">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
