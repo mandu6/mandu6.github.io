@@ -30,5 +30,5 @@ function startCountdown(containerId, eventDate) {
 }
 
 // 设置并启动两个倒计时
-var eventDate1 = new Date("2025-09-11T00:00:00");
+var eventDate1 = new Date("2026-04-30T12:30:00");
 startCountdown('countdown1', eventDate1);
